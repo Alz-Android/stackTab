@@ -39,7 +39,7 @@ export function LoginScreen(props) {
           </TouchableOpacity>
   
           <TouchableOpacity>
-            <Text style={styles.loginText} onPress={() => this.props.navigation.navigate('Register')}>Register</Text>
+            <Text style={styles.loginText} onPress={() => props.navigation.navigate('Register')}>Register</Text>
           </TouchableOpacity>  
           
             <TouchableOpacity style={styles.loginBtn} onPress={() => props.navigation.navigate('SelectGenres')}> 

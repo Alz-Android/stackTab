@@ -1,62 +1,75 @@
-import * as React from 'react';
-import { Button, Text, View, ImageBackground, CheckBox } from 'react-native';
+import React, { useState } from 'react'
+import { Button, Text, View, ImageBackground, CheckBox, TouchableOpacity } from 'react-native';
 import {styles} from './../styles/styles.js'
 
+
+
 export function SelectGenresScreen(props) {
+
+    const z = "123"
+    const [genre, setVisible] = useState( {
+        action: false,
+        adventure: false,
+        anime: false,
+        horror: false,
+        romance: false,
+        scifi: false,
+      }
+    )
     
-  return(
+    return(
         <View style={styles.container}>  
-          <View style={{flexDirection: 'row'}}>             
+        <View style={{flexDirection: 'row'}}>             
             <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/111/80/80.jpg' }} >      
-              <Text style={styles.loginText}>Action</Text>
-            </ImageBackground>         
+                <Text style={styles.loginText}>Action</Text>
+            </ImageBackground>     
             <CheckBox
-    //        value={this.state.action}
-   //         onChange={() => this.setState({ action: !this.state.action })}
+                value= {genre.action}
+                onChange= { () => setVisible( !genre.action)}
             />                    
-          </View>
-          
-          {/* <View style={{flexDirection: 'row'}}>
+        </View>
+        
+        <View style={{flexDirection: 'row'}}>
             <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/12/80/80.jpg' }} >
-              <Text style={styles.loginText}>Adventure</Text>
+            <Text style={styles.loginText}>Adventure</Text>
             </ImageBackground>  
             <CheckBox
-              value={this.state.adventure}
-              onChange={() => this.setState({ adventure: !this.state.adventure })}
+            value={genre.adventure}
+            onChange={() => setVisible( !genre.adventure)}
             />
-          </View>
-          <View style={{flexDirection: 'row'}}>             
+        </View>
+        <View style={{flexDirection: 'row'}}>             
             <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/113/80/80.jpg' }} >      
-              <Text style={styles.loginText}>Romance</Text>
+            <Text style={styles.loginText}>Romance</Text>
             </ImageBackground>         
             <CheckBox
-            value={this.state.romance}
-            onChange={() => this.setState({ romance: !this.state.romance })}
+            value={genre.romance}
+            onChange={() => setVisible( !genre.romance )}
             />                    
-          </View>
-          
-          <View style={{flexDirection: 'row'}}>
+        </View>
+        
+        <View style={{flexDirection: 'row'}}>
             <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-              <Text style={styles.loginText}>SciFi</Text>
+            <Text style={styles.loginText}>SciFi</Text>
             </ImageBackground>  
             <CheckBox
-              value={this.state.scifi}
-              onChange={() => this.setState({ scifi: !this.state.scifi })}
+            value={genre.scifi}
+            onChange={() => setVisible( !genre.scifi )}
             />
-          </View> */}
+        </View>
 
 
-          {/* <TouchableOpacity style={styles.loginBtn} 
-            onPress={() => this.props.navigation.navigate('SelectNovel',
-              {action: this.state.action, 
-              adventure: this.state.adventure,
-              anime: this.state.anime, 
-              horror: this.state.horror,
-              romance: this.state.romance,  
-              scifi: this.state.scifi          
-              })}>
+        <TouchableOpacity style={styles.loginBtn} 
+            onPress={() => props.navigation.navigate('MainTabs',
+            {action: genre.action, 
+            adventure: genre.adventure,
+            anime: genre.anime, 
+            horror: genre.horror,
+            romance: genre.romance,  
+            scifi: genre.scifi          
+            })}>
             <Text>Next</Text>
-          </TouchableOpacity>           */}
+        </TouchableOpacity>          
         </View>
   );
 }
