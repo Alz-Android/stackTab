@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -7,7 +7,6 @@ import { Ionicons } from '@expo/vector-icons';
 const Tab = createMaterialTopTabNavigator();
 export function MainTabsScreen(props) {
   return (
-
     <Tab.Navigator
         screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -22,26 +21,37 @@ export function MainTabsScreen(props) {
           : 'ios-list';
         }
 
-          return <Ionicons name={iconName} size={size} color={color}     />;
+          return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}
           tabBarOptions={{
-          activeTintColor: 'tomato',
+          activeTintColor: 'green',
           inactiveTintColor: 'gray',
           }}
       >
-        <Tab.Screen name="Home" component={DetailsStackScreen} />
-        <Tab.Screen name="Settings" component={DetailsStackScreen1} />
+        <Tab.Screen name="Following" component={DetailsStackScreen} />
+        <Tab.Screen name="Discover" component={DetailsStackScreen1} />
+        <Tab.Screen name="Browse" component={DetailsStackScreen2} />
+        <Tab.Screen name="Playlists" component={DetailsStackScreen3} />
       </Tab.Navigator>
   
   );
 }
 
-function DetailsStackScreen() {
+// export function MainTabsScreen({ route, navigation}) {
+
+//   const { action } = route.params;
+//   return (
+//      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//        <Text style={{textAlign: 'center', marginTop: 300}}>{ JSON.stringify(action) }</Text>
+//      </View>
+//    );
+//  }
+
+ function DetailsStackScreen() {
   return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
        <Text style={{textAlign: 'center', marginTop: 300}}>Details Screen</Text>
-
      </View>
    );
  }
@@ -50,7 +60,22 @@ function DetailsStackScreen() {
   return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
        <Text style={{textAlign: 'center', marginTop: 300}}>Details Screen1</Text>
+     </View>
+   );
+ }
 
+ function DetailsStackScreen2() {
+  return (
+     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+       <Text style={{textAlign: 'center', marginTop: 300}}>Details Screen2</Text>
+     </View>
+   );
+ }
+
+ function DetailsStackScreen3() {
+  return (
+     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+       <Text style={{textAlign: 'center', marginTop: 300}}>Details Screen3</Text>
      </View>
    );
  }

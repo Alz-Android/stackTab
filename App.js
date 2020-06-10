@@ -9,7 +9,7 @@ import {SelectGenresScreen} from './screens/SelectGenresScreen.js'
 import {MainTabsScreen}     from './screens/MainTabsScreen.js'
 
 const Stack = createStackNavigator();
-export default function App() {
+export default function App({navigation}) {
   return (
     <NavigationContainer>
      <Stack.Navigator>

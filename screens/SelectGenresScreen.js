@@ -4,9 +4,8 @@ import {styles} from './../styles/styles.js'
 
 
 
-export function SelectGenresScreen(props) {
+export function SelectGenresScreen({navigation}) {
 
-    const z = "123"
     const [genre, setVisible] = useState( {
         action: false,
         adventure: false,
@@ -60,14 +59,14 @@ export function SelectGenresScreen(props) {
 
 
         <TouchableOpacity style={styles.loginBtn} 
-            onPress={() => props.navigation.navigate('MainTabs',
-            {action: genre.action, 
-            adventure: genre.adventure,
-            anime: genre.anime, 
-            horror: genre.horror,
-            romance: genre.romance,  
-            scifi: genre.scifi          
-            })}>
+            onPress={() => navigation.navigate('MainTabs',
+                {action: genre.action, 
+                adventure: genre.adventure,
+                anime: genre.anime, 
+                horror: genre.horror,
+                romance: genre.romance,  
+                scifi: genre.scifi          
+                })}>
             <Text>Next</Text>
         </TouchableOpacity>          
         </View>

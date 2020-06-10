@@ -3,7 +3,7 @@ import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 import {styles} from './../styles/styles.js'
 
-export function LoginScreen(props) {
+export function LoginScreen({navigation}) {
     state={
       email:"",
       password:"",
@@ -39,10 +39,10 @@ export function LoginScreen(props) {
           </TouchableOpacity>
   
           <TouchableOpacity>
-            <Text style={styles.loginText} onPress={() => props.navigation.navigate('Register')}>Register</Text>
+            <Text style={styles.loginText} onPress={() => navigation.navigate('Register')}>Register</Text>
           </TouchableOpacity>  
           
-            <TouchableOpacity style={styles.loginBtn} onPress={() => props.navigation.navigate('SelectGenres')}> 
+            <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('SelectGenres')}> 
             <Text >TRY NOW</Text>
           </TouchableOpacity>
         </View>
