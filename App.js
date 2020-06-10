@@ -12,31 +12,12 @@ const Stack = createStackNavigator();
 export default function App({navigation}) {
   return (
     <NavigationContainer>
-     <Stack.Navigator>
+      <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SelectGenres" component={SelectGenresScreen} />
         <Stack.Screen name="MainTabs" component={MainTabsScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
-// function HomeStackScreen({ navigation }) {
-//  return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Text style={{textAlign: 'center', marginTop: 300}}>Home Screen</Text>
-//       <Button
-//           title="Go to Settings"
-//           onPress={() => navigation.navigate('Settings')}
-//         />
-//     </View>
-//   );
-// }
-
-
-
-
-
-
-

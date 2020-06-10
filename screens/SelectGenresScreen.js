@@ -58,15 +58,19 @@ export function SelectGenresScreen({navigation}) {
         </View>
 
 
+
         <TouchableOpacity style={styles.loginBtn} 
-            onPress={() => navigation.navigate('MainTabs',
-                {action: genre.action, 
-                adventure: genre.adventure,
-                anime: genre.anime, 
-                horror: genre.horror,
-                romance: genre.romance,  
-                scifi: genre.scifi          
-                })}>
+            onPress={() => navigation.navigate('MainTabs', {
+                screen: 'Following',
+                params: {
+                        action: genre.action, 
+                        adventure: genre.adventure,
+                        anime: genre.anime, 
+                        horror: genre.horror,
+                        romance: genre.romance,  
+                        scifi: genre.scifi          
+                  },
+              })}>
             <Text>Next</Text>
         </TouchableOpacity>          
         </View>

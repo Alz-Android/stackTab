@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 const Tab = createMaterialTopTabNavigator();
-export function MainTabsScreen(props) {
+export function MainTabsScreen({navigation}) {
   return (
     <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -48,10 +48,13 @@ export function MainTabsScreen(props) {
 //    );
 //  }
 
- function DetailsStackScreen() {
+ function DetailsStackScreen({route, navigation}) {
+  
+  const { action } = route.params;
+
   return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       <Text style={{textAlign: 'center', marginTop: 300}}>Details Screen</Text>
+       <Text style={{textAlign: 'center', marginTop: 300}}>{ JSON.stringify(action) }</Text>
      </View>
    );
  }
