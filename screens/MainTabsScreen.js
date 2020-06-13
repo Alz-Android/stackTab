@@ -50,11 +50,16 @@ export function MainTabsScreen({navigation}) {
 
  function DetailsStackScreen({route, navigation}) {
   
-  const { action } = route.params;
+  const { action, adventure, anime, horror, romance, scifi } = route.params;
 
   return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       <Text style={{textAlign: 'center', marginTop: 300}}>{ JSON.stringify(action) }</Text>
+       <Text style={{textAlign: 'center', marginTop: 200}}>{ JSON.stringify(action) }</Text>
+       <Text style={{textAlign: 'center'}}>{ JSON.stringify(adventure) }</Text>
+       <Text style={{textAlign: 'center'}}>{ JSON.stringify(anime) }</Text>
+       <Text style={{textAlign: 'center'}}>{ JSON.stringify(horror) }</Text>
+       <Text style={{textAlign: 'center'}}>{ JSON.stringify(romance) }</Text>
+       <Text style={{textAlign: 'center'}}>{ JSON.stringify(scifi) }</Text>
      </View>
    );
  }

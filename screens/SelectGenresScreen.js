@@ -7,12 +7,12 @@ import {styles} from './../styles/styles.js'
 export function SelectGenresScreen({navigation}) {
 
     const [genre, setVisible] = useState( {
-        action: false,
+        action: true,
         adventure: false,
         anime: false,
         horror: false,
         romance: false,
-        scifi: false,
+        scifi: true,
       }
     )
     
