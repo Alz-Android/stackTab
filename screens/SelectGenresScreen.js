@@ -6,74 +6,52 @@ import {styles} from './../styles/styles.js'
 
 export function SelectGenresScreen({navigation}) {
 
-    const [genre, setVisible] = useState( {
-        action: false,
-        adventure: false,
-        anime: false,
-        horror: false,
-        romance: false,
-        scifi: true,
-      }
-    )
-    
-
-    const [isSelected, setSelection] = useState(false);
+   const [action, setAction] = useState(false);
+   const [adventure, setAdventure] = useState(false);
+   const [anime, setAnime] = useState(false);
+   const [horror, setHorror] = useState(false);
+   const [romance, setRomance] = useState(false);
+   const [scifi, setScifi] = useState(false);
 
     return(
         <View style={styles.container}>  
-
-
-
-
-
-            <View style={styles.checkboxContainer}>
-                <CheckBox
-                value={isSelected}
-                onValueChange={setSelection}
-                style={styles.checkbox}
-                />
-                <Text style={styles.label}>Do you like React Native?</Text>
-            </View>
-            <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text>
-
             <View style={{flexDirection: 'row'}}>             
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/111/80/80.jpg' }} >      
                     <Text style={styles.loginText}>Action</Text>
-                    <Text style={styles.loginText}>{ JSON.stringify(genre.action) }</Text>
+                    <Text style={styles.loginText}>{ JSON.stringify(action) }</Text>
                 </ImageBackground>     
                 <CheckBox
-                    value= {genre.action}
-                    onValueChange={setVisible}
-                    // onChange= { () => setVisible( !genre.action)}
+                    value= {action}
+                    onValueChange={setAction}
                 />                    
             </View>
             
             <View style={{flexDirection: 'row'}}>
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/12/80/80.jpg' }} >
-                <Text style={styles.loginText}>Adventure</Text>
+                    <Text style={styles.loginText}>Adventure</Text>
                 </ImageBackground>  
                 <CheckBox
-                value={genre.adventure}
-                onChange={() => setVisible( !genre.adventure)}
+                value={adventure}
+                onValueChange={setAdventure}
                 />
             </View>
             <View style={{flexDirection: 'row'}}>             
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/113/80/80.jpg' }} >      
-                <Text style={styles.loginText}>Romance</Text>
+                    <Text style={styles.loginText}>Romance</Text>
                 </ImageBackground>         
                 <CheckBox
-                value={genre.romance}
-                onChange={() => setVisible( !genre.romance )}
+                value={romance}
+                onValueChange={setRomance}
                 />                    
             </View>
             
             <View style={{flexDirection: 'row'}}>
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-                <Text style={styles.loginText}>SciFi</Text>
+                    <Text style={styles.loginText}>SciFi</Text>
                 </ImageBackground>  
                 <CheckBox
-                value={genre.scifi}
-                onChange={() => setVisible( !genre.scifi )}
+                value={scifi}
+                onValueChange={setScifi}
                 />
             </View>
 
@@ -83,12 +61,12 @@ export function SelectGenresScreen({navigation}) {
             onPress={() => navigation.navigate('MainTabs', {
                 screen: 'Following',
                 params: {
-                        action: genre.action, 
-                        adventure: genre.adventure,
-                        anime: genre.anime, 
-                        horror: genre.horror,
-                        romance: genre.romance,  
-                        scifi: genre.scifi          
+                        action: action, // genre.action ..
+                        adventure: adventure,
+                        anime: anime, 
+                        horror: horror,
+                        romance: romance,  
+                        scifi: scifi          
                   },
               })}>
             <Text>Next</Text>
@@ -96,3 +74,42 @@ export function SelectGenresScreen({navigation}) {
         </View>
   );
 }
+
+
+
+// can't figure how to do all genres with one usestate 
+    // const [genre, setVisible] = useState( {
+    //     action: false,
+    //     adventure: false,
+    //     anime: false,
+    //     horror: false,
+    //     romance: false,
+    //     scifi: true,
+    //   }
+    // )
+    
+    // const handleChange = (event) => {
+    //     const target = event.target;
+    //     const value =  event.value;    //target.type === "checkbox" ? target.checked : target.value;
+    //     const name = event.name;
+    //     console.log(event);
+
+    //     setVisible(oldCredentials => ({
+    //       ...oldCredentials,
+    //       [name]: value
+    //     }));
+    //   };
+    
+
+    // const [isSelected, setSelection] = useState(false);
+
+    //         <View style={styles.checkboxContainer}>
+    //             <CheckBox
+    //                 value={isSelected}
+    //                 onValueChange={setSelection}
+    //                 style={styles.checkbox}
+    //             />
+    //             <Text style={styles.label}>Do you like React Native?</Text>
+    //         </View>
+    //         <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text>
+
