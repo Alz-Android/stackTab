@@ -7,7 +7,7 @@ import {styles} from './../styles/styles.js'
 export function SelectGenresScreen({navigation}) {
 
     const [genre, setVisible] = useState( {
-        action: true,
+        action: false,
         adventure: false,
         anime: false,
         horror: false,
@@ -16,46 +16,66 @@ export function SelectGenresScreen({navigation}) {
       }
     )
     
+
+    const [isSelected, setSelection] = useState(false);
+
     return(
         <View style={styles.container}>  
-        <View style={{flexDirection: 'row'}}>             
-            <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/111/80/80.jpg' }} >      
-                <Text style={styles.loginText}>Action</Text>
-            </ImageBackground>     
-            <CheckBox
-                value= {genre.action}
-                onChange= { () => setVisible( !genre.action)}
-            />                    
-        </View>
-        
-        <View style={{flexDirection: 'row'}}>
-            <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/12/80/80.jpg' }} >
-            <Text style={styles.loginText}>Adventure</Text>
-            </ImageBackground>  
-            <CheckBox
-            value={genre.adventure}
-            onChange={() => setVisible( !genre.adventure)}
-            />
-        </View>
-        <View style={{flexDirection: 'row'}}>             
-            <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/113/80/80.jpg' }} >      
-            <Text style={styles.loginText}>Romance</Text>
-            </ImageBackground>         
-            <CheckBox
-            value={genre.romance}
-            onChange={() => setVisible( !genre.romance )}
-            />                    
-        </View>
-        
-        <View style={{flexDirection: 'row'}}>
-            <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>SciFi</Text>
-            </ImageBackground>  
-            <CheckBox
-            value={genre.scifi}
-            onChange={() => setVisible( !genre.scifi )}
-            />
-        </View>
+
+
+
+
+
+            <View style={styles.checkboxContainer}>
+                <CheckBox
+                value={isSelected}
+                onValueChange={setSelection}
+                style={styles.checkbox}
+                />
+                <Text style={styles.label}>Do you like React Native?</Text>
+            </View>
+            <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text>
+
+            <View style={{flexDirection: 'row'}}>             
+                <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/111/80/80.jpg' }} >      
+                    <Text style={styles.loginText}>Action</Text>
+                    <Text style={styles.loginText}>{ JSON.stringify(genre.action) }</Text>
+                </ImageBackground>     
+                <CheckBox
+                    value= {genre.action}
+                    onValueChange={setVisible}
+                    // onChange= { () => setVisible( !genre.action)}
+                />                    
+            </View>
+            
+            <View style={{flexDirection: 'row'}}>
+                <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/12/80/80.jpg' }} >
+                <Text style={styles.loginText}>Adventure</Text>
+                </ImageBackground>  
+                <CheckBox
+                value={genre.adventure}
+                onChange={() => setVisible( !genre.adventure)}
+                />
+            </View>
+            <View style={{flexDirection: 'row'}}>             
+                <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/113/80/80.jpg' }} >      
+                <Text style={styles.loginText}>Romance</Text>
+                </ImageBackground>         
+                <CheckBox
+                value={genre.romance}
+                onChange={() => setVisible( !genre.romance )}
+                />                    
+            </View>
+            
+            <View style={{flexDirection: 'row'}}>
+                <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
+                <Text style={styles.loginText}>SciFi</Text>
+                </ImageBackground>  
+                <CheckBox
+                value={genre.scifi}
+                onChange={() => setVisible( !genre.scifi )}
+                />
+            </View>
 
 
 
