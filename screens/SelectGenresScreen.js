@@ -18,7 +18,6 @@ export function SelectGenresScreen({navigation}) {
             <View style={{flexDirection: 'row'}}>             
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/111/80/80.jpg' }} >      
                     <Text style={styles.loginText}>Action</Text>
-                    <Text style={styles.loginText}>{ JSON.stringify(action) }</Text>
                 </ImageBackground>     
                 <CheckBox
                     value= {action}
