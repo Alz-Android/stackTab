@@ -1,17 +1,40 @@
 import React, { useState } from 'react'
 import { Button, Text, View, ImageBackground, CheckBox, TouchableOpacity } from 'react-native';
 import {styles} from './../styles/styles.js'
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 
 export function SelectGenresScreen({navigation}) {
 
-   const [action, setAction] = useState(false);
-   const [adventure, setAdventure] = useState(false);
-   const [anime, setAnime] = useState(false);
-   const [horror, setHorror] = useState(false);
-   const [romance, setRomance] = useState(false);
-   const [scifi, setScifi] = useState(false);
+    const action = false;
+    const adventure = false;
+    const anime = false;
+    const horror = false;
+    const romance = false;
+    const scifi = false;
+
+//    const [action, setAction] = useState(false);
+//    const [adventure, setAdventure] = useState(false);
+//    const [anime, setAnime] = useState(false);
+//    const [horror, setHorror] = useState(false);
+//    const [romance, setRomance] = useState(false);
+//    const [scifi, setScifi] = useState(false);
+
+   const saveData = async () => {
+    try {
+      await AsyncStorage.setItem("action_KEY", JSON.stringify(action))
+      await AsyncStorage.setItem("adventure_KEY", JSON.stringify(adventure))
+      await AsyncStorage.setItem("anime_KEY", JSON.stringify(anime))
+      await AsyncStorage.setItem("horror_KEY", JSON.stringify(horror))
+      await AsyncStorage.setItem("romance_KEY", JSON.stringify( romance))
+      await AsyncStorage.setItem("scifi_KEY", JSON.stringify(scifi))
+      alert('Data successfully saved')
+    } catch (e) {
+      alert('Failed to save the data to the storage')
+    }
+  }
+
 
     return(
         <View style={styles.container}>  
@@ -21,7 +44,7 @@ export function SelectGenresScreen({navigation}) {
                 </ImageBackground>     
                 <CheckBox
                     value= {action}
-                    onValueChange={setAction}
+                    onValueChange={saveData}
                 />                    
             </View>
             
@@ -31,7 +54,7 @@ export function SelectGenresScreen({navigation}) {
                 </ImageBackground>  
                 <CheckBox
                 value={adventure}
-                onValueChange={setAdventure}
+                onValueChange={saveData}
                 />
             </View>
             <View style={{flexDirection: 'row'}}>             
@@ -40,7 +63,7 @@ export function SelectGenresScreen({navigation}) {
                 </ImageBackground>         
                 <CheckBox
                 value={romance}
-                onValueChange={setRomance}
+                onValueChange={saveData}
                 />                    
             </View>
             
@@ -50,25 +73,23 @@ export function SelectGenresScreen({navigation}) {
                 </ImageBackground>  
                 <CheckBox
                 value={scifi}
-                onValueChange={setScifi}
+                onValueChange={saveData}
                 />
             </View>
-
-
 
         <TouchableOpacity style={styles.loginBtn} 
             onPress={() => navigation.navigate('MainTabs', {
                 screen: 'Following',
                 params: {
-                        action: action, // genre.action ..
-                        adventure: adventure,
-                        anime: anime, 
-                        horror: horror,
-                        romance: romance,  
-                        scifi: scifi          
+                        // action: action, // genre.action ..
+                        // adventure: adventure,
+                        // anime: anime, 
+                        // horror: horror,
+                        // romance: romance,  
+                        // scifi: scifi          
                   },
-              })}>
-            <Text>Next</Text>
+              })} >
+            <Text>Save</Text>
         </TouchableOpacity>          
         </View>
   );
