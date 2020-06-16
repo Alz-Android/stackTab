@@ -23,13 +23,15 @@ export function SelectGenresScreen({navigation}) {
 
    const saveData = async () => {
     try {
-      await AsyncStorage.setItem("action_KEY", JSON.stringify(action))
+      await AsyncStorage.setItem("action_KEY", "test") //JSON.stringify(action))
       await AsyncStorage.setItem("adventure_KEY", JSON.stringify(adventure))
       await AsyncStorage.setItem("anime_KEY", JSON.stringify(anime))
       await AsyncStorage.setItem("horror_KEY", JSON.stringify(horror))
       await AsyncStorage.setItem("romance_KEY", JSON.stringify( romance))
       await AsyncStorage.setItem("scifi_KEY", JSON.stringify(scifi))
       alert('Data successfully saved')
+      const x = await AsyncStorage.getItem("action_KEY")
+      alert(x)
     } catch (e) {
       alert('Failed to save the data to the storage')
     }
@@ -89,7 +91,7 @@ export function SelectGenresScreen({navigation}) {
                         // scifi: scifi          
                   },
               })} >
-            <Text>Save</Text>
+            <Text>Next</Text>
         </TouchableOpacity>          
         </View>
   );

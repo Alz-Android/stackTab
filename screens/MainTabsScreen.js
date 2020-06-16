@@ -43,74 +43,28 @@ export function MainTabsScreen({navigation}) {
  function FollowingScreen({route, navigation}) {
   
   //const { action, adventure, anime, horror, romance, scifi } = route.params;
-
   // const [action, setAction] = useState(false);
 
-
   const readData = async () => {
+    alert("fetched data 0")
     try {
      
-      action = await AsyncStorage.getItem("action_KEY") || 'none';
+      const action = await AsyncStorage.getItem("action_KEY");
       // const adventure = await AsyncStorage.getItem("adventure_KEY")
       // const anime = await AsyncStorage.getItem("anime_KEY")
       // const horror = await AsyncStorage.getItem("horror_KEY")
       // const romance = await AsyncStorage.getItem("romance_KEY")
       // const scifi = await AsyncStorage.setItem("scifi_KEY")
-      alert(JSON.stringify(action))
+      alert("fetched data 1")
     } catch (e) {
       alert('Failed to fetch the data from storage')
     }
   }
-
-
-  useEffect(() => {
-    readData()
-    
-  }, [])
-
-
-  
-
+ 
   return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        {/* <Text style={styles.loginText}>{action}</Text> */}
-
-
-       {/* <View style={action ?  { display:"flex" } : { display:"none" }}>
-        <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>Action</Text>
-        </ImageBackground>  
-      </View>
-       <View style={adventure ?  { display:"flex" } : { display:"none" }}>
-        <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>Adventure</Text>
-        </ImageBackground>  
-      </View>
-      <View style={anime ?  { display:"flex" } : { display:"none" }}>
-        <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>Anime</Text>
-        </ImageBackground>  
-      </View>
-       <View style={horror ?  { display:"flex" } : { display:"none" }}>
-        <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>Horror</Text>
-        </ImageBackground>  
-      </View>
-      <View style={romance ?  { display:"flex" } : { display:"none" }}>
-        <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>Romance</Text>
-        </ImageBackground>  
-      </View>
-       <View style={scifi ?  { display:"flex" } : { display:"none" }}>
-        <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/121/80/80.jpg' }} >
-            <Text style={styles.loginText}>SciFi</Text>
-        </ImageBackground>  
-      </View>
- */}
-
+       <Text style={{textAlign: 'center', marginTop: 300}}>{readData}</Text>
      </View>
-
-
    );
  }
 
