@@ -45,7 +45,7 @@ export function MainTabsScreen({navigation}) {
   //const { action, adventure, anime, horror, romance, scifi } = route.params;
   // const [action, setAction] = useState(false);
 
-  const readData = async () => {
+  const readData = async () => { 
     alert("fetched data 0")
     try {
      
