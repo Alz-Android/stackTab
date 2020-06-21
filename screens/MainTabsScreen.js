@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import {styles} from './../styles/styles.js'
 
 import {SelectGenresScreen} from './SelectGenresScreen.js'
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Tab = createMaterialTopTabNavigator();
 export function MainTabsScreen({navigation}) {
@@ -22,7 +23,6 @@ export function MainTabsScreen({navigation}) {
           ? 'ios-list-box'
           : 'ios-list';
         }
-
           return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}
@@ -36,19 +36,24 @@ export function MainTabsScreen({navigation}) {
         <Tab.Screen name="Browse" component={DetailsStackScreen2} />
         <Tab.Screen name="Playlists" component={DetailsStackScreen3} />
       </Tab.Navigator>
-  
   );
 }
 
- function FollowingScreen({route, navigation}) {
-  
-  //const { action, adventure, anime, horror, romance, scifi } = route.params;
+ function FollowingScreen() {
+  // const { action, adventure, anime, horror, romance, scifi } = route.params;
   // const [action, setAction] = useState(false);
 
+ // const action = false;
+  const adventure = false;
+  const anime = false;
+  const horror = false;
+  const romance = false;
+  const scifi = false;
+
+  alert("fetched data -0")
   const readData = async () => { 
     alert("fetched data 0")
-    try {
-     
+    try {  
       const action = await AsyncStorage.getItem("action_KEY");
       // const adventure = await AsyncStorage.getItem("adventure_KEY")
       // const anime = await AsyncStorage.getItem("anime_KEY")
@@ -60,10 +65,10 @@ export function MainTabsScreen({navigation}) {
       alert('Failed to fetch the data from storage')
     }
   }
- 
+  useEffect(readData);
   return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       <Text style={{textAlign: 'center', marginTop: 300}}>{readData}</Text>
+       <Text style={{textAlign: 'center'}}></Text>
      </View>
    );
  }
@@ -79,7 +84,6 @@ export function MainTabsScreen({navigation}) {
  function DetailsStackScreen2(navigation) {
   return (
         SelectGenresScreen(navigation)
-
     //  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     //    <Text style={{textAlign: 'center'}}>Details Screen2</Text>
     //  </View>

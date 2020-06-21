@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Button, Text, View, ImageBackground, CheckBox, TouchableOpacity } from 'react-native';
 import {styles} from './../styles/styles.js'
+
 import AsyncStorage from '@react-native-community/async-storage';
+import * as SQLite from 'expo-sqlite';
 
 
 
@@ -30,8 +32,8 @@ export function SelectGenresScreen({navigation}) {
       await AsyncStorage.setItem("romance_KEY", JSON.stringify( romance))
       await AsyncStorage.setItem("scifi_KEY", JSON.stringify(scifi))
       alert('Data successfully saved')
-      const x = await AsyncStorage.getItem("action_KEY")
-      alert(x)
+    //   const x = await AsyncStorage.getItem("action_KEY")
+    //   alert(x)
     } catch (e) {
       alert('Failed to save the data to the storage')
     }
