@@ -40,38 +40,44 @@ export function MainTabsScreen({navigation}) {
 }
 
  function FollowingScreen() {
-  // const { action, adventure, anime, horror, romance, scifi } = route.params;
-  // const [action, setAction] = useState(false);
+ 
+    const [action, setAction] = useState(false);
+    const [adventure, setAdventure] = useState(false);
+    // const [anime, setAnime] = useState(false);
+    // const [horror, setHorror] = useState(false);
+    // const [romance, setRomance] = useState(false);
+    // const [scifi, setScifi] = useState(false);
+    
+      async function readData() {
+        alert("fetched data 0")
+        const action = await AsyncStorage.getItem("action_KEY");
+        const adventure = await AsyncStorage.getItem("adventure_KEY")
+        // const anime = await AsyncStorage.getItem("anime_KEY")
+        // const horror = await AsyncStorage.getItem("horror_KEY")
+        // const romance = await AsyncStorage.getItem("romance_KEY")
+        // const scifi = await AsyncStorage.setItem("scifi_KEY")
 
- // const action = false;
-  const adventure = false;
-  const anime = false;
-  const horror = false;
-  const romance = false;
-  const scifi = false;
+        setAction(action);
+        setAdventure(adventure);
+        // setAnime(anime);
+        // setHorror(horror);
+        // setRomance(romance);
+        // setScifi(scifi);
 
-  alert("fetched data -0")
-  const readData = async () => { 
-    alert("fetched data 0")
-    try {  
-      const action = await AsyncStorage.getItem("action_KEY");
-      // const adventure = await AsyncStorage.getItem("adventure_KEY")
-      // const anime = await AsyncStorage.getItem("anime_KEY")
-      // const horror = await AsyncStorage.getItem("horror_KEY")
-      // const romance = await AsyncStorage.getItem("romance_KEY")
-      // const scifi = await AsyncStorage.setItem("scifi_KEY")
-      alert("fetched data 1")
-    } catch (e) {
-      alert('Failed to fetch the data from storage')
+        alert(action)
+      }
+    
+      useEffect(() => {
+        readData();
+      }, []);
+    
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{textAlign: 'center'}}>{action}</Text>
+        </View>
+      );
     }
-  }
-  useEffect(readData);
-  return (
-     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       <Text style={{textAlign: 'center'}}></Text>
-     </View>
-   );
- }
+
 
  function DetailsStackScreen1() {
   return (

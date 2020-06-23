@@ -3,20 +3,17 @@ import { Button, Text, View, ImageBackground, CheckBox, TouchableOpacity } from 
 import {styles} from './../styles/styles.js'
 
 import AsyncStorage from '@react-native-community/async-storage';
-import * as SQLite from 'expo-sqlite';
-
-
 
 export function SelectGenresScreen({navigation}) {
 
-    const action = false;
-    const adventure = false;
-    const anime = false;
-    const horror = false;
-    const romance = false;
-    const scifi = false;
+     //const action = false;
+    // const adventure = false;
+    // const anime = false;
+    // const horror = false;
+    // const romance = false;
+    // const scifi = false;
 
-//    const [action, setAction] = useState(false);
+    const [action, setAction] = useState(false);
 //    const [adventure, setAdventure] = useState(false);
 //    const [anime, setAnime] = useState(false);
 //    const [horror, setHorror] = useState(false);
@@ -25,12 +22,18 @@ export function SelectGenresScreen({navigation}) {
 
    const saveData = async () => {
     try {
-      await AsyncStorage.setItem("action_KEY", "test") //JSON.stringify(action))
-      await AsyncStorage.setItem("adventure_KEY", JSON.stringify(adventure))
-      await AsyncStorage.setItem("anime_KEY", JSON.stringify(anime))
-      await AsyncStorage.setItem("horror_KEY", JSON.stringify(horror))
-      await AsyncStorage.setItem("romance_KEY", JSON.stringify( romance))
-      await AsyncStorage.setItem("scifi_KEY", JSON.stringify(scifi))
+        alert(action)
+        await AsyncStorage.setItem("action_KEY", JSON.stringify(action)); // JSON.stringify(action))
+   //   const adventure = await AsyncStorage.setItem("adventure_KEY", JSON.stringify(adventure))
+    //   await AsyncStorage.setItem("anime_KEY", JSON.stringify(anime))
+    //   await AsyncStorage.setItem("horror_KEY", JSON.stringify(horror))
+    //   const romance = await AsyncStorage.setItem("romance_KEY", JSON.stringify( romance))
+    //   const scifi = await AsyncStorage.setItem("scifi_KEY", JSON.stringify(scifi))
+
+
+    // setAction(action)
+    // setAdventure(adventure)
+
       alert('Data successfully saved')
     //   const x = await AsyncStorage.getItem("action_KEY")
     //   alert(x)
@@ -44,14 +47,14 @@ export function SelectGenresScreen({navigation}) {
         <View style={styles.container}>  
             <View style={{flexDirection: 'row'}}>             
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/111/80/80.jpg' }} >      
-                    <Text style={styles.loginText}>Action</Text>
+                    <Text style={styles.loginText}></Text>
                 </ImageBackground>     
                 <CheckBox
                     value= {action}
                     onValueChange={saveData}
                 />                    
             </View>
-            
+{/*             
             <View style={{flexDirection: 'row'}}>
                 <ImageBackground  style={styles.imageThumbnailTitles} source={{ uri: 'https://i.picsum.photos/id/12/80/80.jpg' }} >
                     <Text style={styles.loginText}>Adventure</Text>
@@ -79,7 +82,7 @@ export function SelectGenresScreen({navigation}) {
                 value={scifi}
                 onValueChange={saveData}
                 />
-            </View>
+            </View> */}
 
         <TouchableOpacity style={styles.loginBtn} 
             onPress={() => navigation.navigate('MainTabs', {
