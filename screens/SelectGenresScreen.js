@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Text, View, ImageBackground, CheckBox, TouchableOpacity } from 'react-native';
+import { Button, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
 import {styles} from './../styles/styles.js'
 
+import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export function SelectGenresScreen({navigation}) {
@@ -20,8 +21,11 @@ export function SelectGenresScreen({navigation}) {
 //    const [romance, setRomance] = useState(false);
 //    const [scifi, setScifi] = useState(false);
 
-   const saveData = async () => {
+   //const saveData = async () => {
+
+    const saveData = async () => {
     try {
+       
         alert(action)
         await AsyncStorage.setItem("action_KEY", JSON.stringify(action)); // JSON.stringify(action))
    //   const adventure = await AsyncStorage.setItem("adventure_KEY", JSON.stringify(adventure))
@@ -31,7 +35,7 @@ export function SelectGenresScreen({navigation}) {
     //   const scifi = await AsyncStorage.setItem("scifi_KEY", JSON.stringify(scifi))
 
 
-    // setAction(action)
+    
     // setAdventure(adventure)
 
       alert('Data successfully saved')
@@ -51,7 +55,7 @@ export function SelectGenresScreen({navigation}) {
                 </ImageBackground>     
                 <CheckBox
                     value= {action}
-                    onValueChange={saveData}
+                    onValueChange={() => action ? setAction(false) : setAction(true)}
                 />                    
             </View>
 {/*             
